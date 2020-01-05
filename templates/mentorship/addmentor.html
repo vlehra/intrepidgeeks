@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+<br><br>
+
+<section class="blog section-padding" data-scroll-index='0'>
+      <div class="container">
+        <div class="row">
+          <!-- Title -->
+         <div class="title col-md-12">
+    	<h3>Add Mentor</h3>
+		</div>
+          {{ error }}
+          <form method="POST" action="{% url 'addmentors' %}" enctype="multipart/form-data" >
+{% csrf_token %}
+ {{ form.as_p }}
+  
+
+  
+  
+  <input class="btn btn-success" type="submit" value="SAVE"/>
+
+
+</form>
+	</div>
+    </div>
+</section>
+{% endblock %}

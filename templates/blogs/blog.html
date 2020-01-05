@@ -1,0 +1,394 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+<div class="jumbotron">
+  <h1 class="display-4"><div class="title col-md-12">
+        <h3>Blogs</h3>
+      </div></h1>
+  <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  
+</div>
+<!-- left nav bar -->
+<div class="container"></div>
+<div class="row">
+  <div class="col-1">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Blogs</a>
+      <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Counselling</a>
+      <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Opportunities</a>
+      <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Time Management</a>
+      <a class="nav-link" id="v-pills-self-tab" data-toggle="pill" href="#v-pills-self" role="tab" aria-controls="v-pills-self" aria-selected="false">Self Development</a>
+      <a class="nav-link" id="v-pills-mfit-tab" data-toggle="pill" href="#v-pills-mfit" role="tab" aria-controls="v-pills-mfit" aria-selected="false">Mental Fitness</a>
+      <a class="nav-link" id="v-pills-aca-tab" data-toggle="pill" href="#v-pills-aca" role="tab" aria-controls="v-pills-aca" aria-selected="false">Academics</a>
+      <a class="nav-link" id="v-pills-tech-tab" data-toggle="pill" href="#v-pills-tech" role="tab" aria-controls="v-pills-tech" aria-selected="false">Technical Skills</a>
+      <a class="nav-link" id="v-pills-event-tab" data-toggle="pill" href="#v-pills-event" role="tab" aria-controls="v-pills-event" aria-selected="false">Events</a>
+           
+    </div>
+  </div>
+  <div class="col-11">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+<!-- Start Blog -->
+<section class="blog section-padding" data-scroll-index='0'>
+  <div class="container">
+    <!-- Title -->
+    
+    <div class="row my-2">
+    {% for k in blog reversed %}
+     <!--Card-->
+     <div  id="blog" class="col-lg-4">
+        <img src="{{ k.Header_pic.url }}" class="bd-placeholder-img " width="140" height="140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <h2>{{ k.title_intro }}</h2>
+        <p>{{ k.intro }}</p>
+        <p><a class="btn btn-secondary" href="{{ k.get_absolute_url }}" role="button">Show More »</a></p>
+      </div>
+
+      
+    <!--/.Card--> 
+  {% if forloop.counter|divisibleby:3 %}
+    </div> <br/><div class="row my-2">
+  {% endif %}
+
+  {% endfor %}
+  </div>
+</section>
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+   </div>
+      <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+        <!-- Start Blog -->
+<section class="blog section-padding" data-scroll-index='0'>
+  <div class="container">
+    <!-- Title -->
+    
+    <div class="row my-2">
+    {% for k in blog reversed %}
+     <!--Card-->
+     {% if k.Counselling == True %}
+     <div class="col-lg-4">
+        <img src="{{ k.Header_pic.url }}" class="bd-placeholder-img " width="140" height="140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <h2>{{ k.title_intro }}</h2>
+        <p>{{ k.intro }}</p>
+        <p><a class="btn btn-secondary" href="{{ k.get_absolute_url }}" role="button">Show More »</a></p>
+      </div>
+
+      
+    <!--/.Card--> 
+  {% if forloop.counter|divisibleby:3 %}
+    </div> <br/><div class="row my-2">
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+  </div>
+</section>
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+        <!-- Start Blog -->
+<section class="blog section-padding" data-scroll-index='0'>
+  <div class="container">
+    <!-- Title -->
+    
+    <div class="row my-2">
+    {% for k in blog reversed %}
+     <!--Card-->
+     {% if k.opportunites == True %}
+     <div class="col-lg-4">
+        <img src="{{ k.Header_pic.url }}" class="bd-placeholder-img " width="140" height="140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <h2>{{ k.title_intro }}</h2>
+        <p>{{ k.intro }}</p>
+        <p><a class="btn btn-secondary" href="{{ k.get_absolute_url }}" role="button">Show More »</a></p>
+      </div>
+
+      
+    <!--/.Card--> 
+  {% if forloop.counter|divisibleby:3 %}
+    </div> <br/><div class="row my-2">
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+  </div>
+</section>
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+        
+                <!-- Start Blog -->
+<section class="blog section-padding" data-scroll-index='0'>
+  <div class="container">
+    <!-- Title -->
+    
+    <div class="row my-2">
+    {% for k in blog reversed %}
+     <!--Card-->
+     {% if k.time_manag == True %}
+     <div class="col-lg-4">
+        <img src="{{ k.Header_pic.url }}" class="bd-placeholder-img " width="140" height="140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <h2>{{ k.title_intro }}</h2>
+        <p>{{ k.intro }}</p>
+        <p><a class="btn btn-secondary" href="{{ k.get_absolute_url }}" role="button">Show More »</a></p>
+      </div>
+
+      
+    <!--/.Card--> 
+  {% if forloop.counter|divisibleby:3 %}
+    </div> <br/><div class="row my-2">
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+  </div>
+</section>
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-self" role="tabpanel" aria-labelledby="v-pills-self-tab"> 
+
+
+                <!-- Start Blog -->
+<section class="blog section-padding" data-scroll-index='0'>
+  <div class="container">
+    <!-- Title -->
+    
+    <div class="row my-2">
+    {% for k in blog reversed %}
+     <!--Card-->
+     {% if k.self_dev == True %}
+     <div class="col-lg-4">
+        <img src="{{ k.Header_pic.url }}" class="bd-placeholder-img " width="140" height="140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <h2>{{ k.title_intro }}</h2>
+        <p>{{ k.intro }}</p>
+        <p><a class="btn btn-secondary" href="{{ k.get_absolute_url }}" role="button">Show More »</a></p>
+      </div>
+
+      
+    <!--/.Card--> 
+  {% if forloop.counter|divisibleby:3 %}
+    </div> <br/><div class="row my-2">
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+  </div>
+</section>
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-mfit" role="tabpanel" aria-labelledby="v-pills-mfit-tab">
+
+                        <!-- Start Blog -->
+<section class="blog section-padding" data-scroll-index='0'>
+  <div class="container">
+    <!-- Title -->
+   
+    <div class="row my-2">
+    {% for k in blog reversed %}
+     <!--Card-->
+     {% if k.mfitness == True %}
+     <div class="col-lg-4">
+        <img src="{{ k.Header_pic.url }}" class="bd-placeholder-img " width="140" height="140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <h2>{{ k.title_intro }}</h2>
+        <p>{{ k.intro }}</p>
+        <p><a class="btn btn-secondary" href="{{ k.get_absolute_url }}" role="button">Show More »</a></p>
+      </div>
+
+      
+    <!--/.Card--> 
+  {% if forloop.counter|divisibleby:3 %}
+    </div> <br/><div class="row my-2">
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+  </div>
+</section>
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-aca" role="tabpanel" aria-labelledby="v-pills-aca-tab">
+                                <!-- Start Blog -->
+<section class="blog section-padding" data-scroll-index='0'>
+  <div class="container">
+    <!-- Title -->
+    
+    <div class="row my-2">
+    {% for k in blog reversed %}
+     <!--Card-->
+     {% if k.acadmics == True %}
+     <div class="col-lg-4">
+        <img src="{{ k.Header_pic.url }}" class="bd-placeholder-img " width="140" height="140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <h2>{{ k.title_intro }}</h2>
+        <p>{{ k.intro }}</p>
+        <p><a class="btn btn-secondary" href="{{ k.get_absolute_url }}" role="button">Show More »</a></p>
+      </div>
+
+      
+    <!--/.Card--> 
+  {% if forloop.counter|divisibleby:3 %}
+    </div> <br/><div class="row my-2">
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+  </div>
+</section>
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-tech" role="tabpanel" aria-labelledby="v-pills-tech-tab">
+        
+                                        <!-- Start Blog -->
+<section class="blog section-padding" data-scroll-index='0'>
+  <div class="container">
+    <!-- Title -->
+    
+    <div class="row my-2">
+    {% for k in blog reversed %}
+     <!--Card-->
+     {% if k.tech_skills == True %}
+     <div class="col-lg-4">
+        <img src="{{ k.Header_pic.url }}" class="bd-placeholder-img " width="140" height="140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <h2>{{ k.title_intro }}</h2>
+        <p>{{ k.intro }}</p>
+        <p><a class="btn btn-secondary" href="{{ k.get_absolute_url }}" role="button">Show More »</a></p>
+      </div>
+
+      
+    <!--/.Card--> 
+  {% if forloop.counter|divisibleby:3 %}
+    </div> <br/><div class="row my-2">
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+  </div>
+</section>
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+
+
+      </div>
+      <div class="tab-pane fade" id="v-pills-event" role="tabpanel" aria-labelledby="v-pills-event-tab">
+        
+                                                <!-- Start Blog -->
+<section class="blog section-padding" data-scroll-index='0'>
+  <div class="container">
+    <!-- Title -->
+    
+    <div class="row my-2">
+    {% for k in blog reversed %}
+     <!--Card-->
+     {% if k.events == True %}
+     <div class="col-lg-4">
+        <img src="{{ k.Header_pic.url }}" class="bd-placeholder-img " width="140" height="140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/>
+        <h2>{{ k.title_intro }}</h2>
+        <p>{{ k.intro }}</p>
+        <p><a class="btn btn-secondary" href="{{ k.get_absolute_url }}" role="button">Show More »</a></p>
+      </div>
+
+      
+    <!--/.Card--> 
+  {% if forloop.counter|divisibleby:3 %}
+    </div> <br/><div class="row my-2">
+  {% endif %}
+
+  {% endif %}
+  {% endfor %}
+  </div>
+</section>
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+
+
+
+      </div>
+    </div>
+    </div>
+
+  </div>
+ </div>
+
+<script >
+  $('#myTab a').on('click', function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+})
+  $('#myTab a[href="#profile"]').tab('show') // Select tab by name
+$('#myTab li:first-child a').tab('show') // Select first tab
+$('#myTab li:last-child a').tab('show') // Select last tab
+$('#myTab li:nth-child(3) a').tab('show') // Select third tab
+</script>
+
+
+
+
+
+
+<style >
+  
+@media only screen and (max-width: 990px){
+#blog{
+  margin-left: 100px;
+  margin-top: 80px;
+}
+}
+</style>
+
+
+
+
+{% endblock %}

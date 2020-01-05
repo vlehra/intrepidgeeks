@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+
+<div class="title">
+   <h3>Podcasts</h3>
+</div>
+	
+  <body>
+  <div class="Menu nav nav-tabs" id="nav-tab" role="tablist">
+    <div class="btn">
+    <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'podcast' %}"><i class="fa fa-podcast" aria-hidden="true"></i>PodCasts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'episodes' %} "><i class="fa fa-file-audio-o" aria-hidden="true"></i> Episodes </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'Authors' %}"><i class="fa fa-user-o" aria-hidden="true"></i>Authors </a>
+  </li>
+  
+</ul></div></div></body>
+<br><br>
+<main>
+
+	
+{% for ep in ep %}
+
+<div class="card mb-3" id="podcast" style="max-width: 900px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ep.cover.url}}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 >{{ ep.Name|upper }}</h3>
+        <h5>Episode: {{ ep.Episodes_name }}</h5>
+        <p class="card-text"> This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <audio controls id="audio1">
+          <source src="{{ ep.audio_file.url }}" type="audio/mpeg">
+        </audio>
+        </div>
+        <div class="row">
+        <p class="card-text"><small class="text-muted">{{ ep.pub_date_pretty }} </small></p>
+        <p class="card-text" id="write"><small class="text-muted">By {{ ep.speaker }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+	
+{% for object in object %}
+
+<div class="card mb-3" id="podcast" style="max-width: 900px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{object.cover.url}}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h3 >{{ object.Name|upper }}</h3>
+        <h5>Episode: {{ object.Episodes }}</h5>
+        <p class="card-text"> This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <audio controls id="audio1">
+          <source src="{{ object.audio_file.url }}" type="audio/mpeg">
+        </audio>
+        </div>
+        <div class="row">
+        <p class="card-text"><small class="text-muted">{{ object.pub_date_pretty }} </small></p>
+        <p class="card-text" id="write"><small class="text-muted">By {{ object.speaker }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+
+</main>
+{% if user.is_authenticated %}
+<center><a href="{% url 'addpodcast' %}"><button type="button" class="btn btn-outline-info">Add PodCast</button></a></center>
+    
+{% endif %}
+
+<br>
+
+<style type="text/css">
+	
+*{
+ margin: 0; padding: 0;
+ box-sizing: border-box; font-family: 'Maven Pro', sans-serif;
+}
+main{
+ width: 80%; height: auto;
+ 
+ margin: auto;display: flex; justify-content: space-around;
+ align-items: center; flex-wrap: wrap;
+ 
+}
+
+body{
+    
+    margin-top: 40px;
+    text-align: center;
+    color: #000;
+    height: auto;
+  }
+
+
+.Menu{
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+    }
+.Menu .btn{
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 22px;
+    float: left;
+    color: #fff;
+    padding: 8px 12px;
+
+
+ }
+  .btn .fa{
+    background-color:  rgba(0, 0, 0, 0.5);
+    color: #fff;
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    line-height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    padding: 15px;
+    
+
+}
+  .btn:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: #333;
+}
+
+</style>
+ {% endblock %}

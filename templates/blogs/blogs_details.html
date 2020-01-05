@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+<br/><br/><br/>
+<!-- Start Blog -->
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <article class="boxed push-down-45 post-2321 post type-post status-publish format-standard has-post-thumbnail hentry category-paid-marketing">
+        <div class="meta">
+          <img width="600" height="315" src="{{ object.Header_pic.url }}" class="img-responsive" alt=""/>
+          <div class="row">
+          <div class="col-8">
+          <h5><i class="fa fa-user-o" >  {{ object.writer }}  </i></h5>
+          </div>
+          <div class="col-4 text-right">
+          <h5>
+          <i class="fa fa-clock-o">  {{object.pub_date_pretty}}</i></h5></div></div><br/>
+
+          <div class="post-content  post-content--narrow">
+            <h1 class="entry-title  post-content__title  h1">{{ object.Title }}</h1>
+            <div class="entry-content  post-content__text"><br/>
+              <p style="text-align: justify;"><span style="font-weight: 400;">{{ object.first_para }}</span></p><br/>
+              <p style="text-align: justify;"><span style="font-weight: 400;">{{ object.Second_para }}</span></p><br/>
+              <p style="text-align: justify;"><img class="alignnone wp-image-2322 size-full" src="{{object.Image_1.url}}" alt="" width="1000" height="400"  sizes="(max-width: 1000px) 100vw, 1000px"></p><br/>
+              <p style="text-align: justify;"><span style="font-weight: 400;">{{ object.Third_para }}</span></p><br/>
+              <p style="text-align: justify;"><img class="alignnone wp-image-2322 size-full" src="{{object.Image_2.url}}" alt="" width="1000" height="400"  sizes="(max-width: 1000px) 100vw, 1000px"></p><br/>
+              <p style="text-align: justify;"><span style="font-weight: 400;">{{ object.Fourth_para }}</span></p><br/>
+              <p style="text-align: justify;"><span style="font-weight: 400;">{{ object.Fifth_para }}</span></p><br/>
+              <p style="text-align: justify;"><img class="alignnone wp-image-2322 size-full" src="{{object.Image_3.url}}" alt="" width="1000" height="400"  sizes="(max-width: 1000px) 100vw, 1000px"></p><br/>
+              <p style="text-align: justify;"><span style="font-weight: 400;">{{ object.Sixth_para }}</span></p><br/>
+          </div>
+        </div>
+        <div class="post-author">
+          <h6>Written By</h6>
+          
+          <span class="fn">{{ object.writer }}</span><hr>
+          <br/>
+          <div class="fb-like" data-href="http://localhost:8000/blogs/" data-width="" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+
+          <div class="comments  push-down-30">
+            <h4>Comments</h4>
+            <hr>
+            <section class="comments-container">
+              
+              <br/>
+              <div class="fb-comments" data-href="http://localhost:8000/blogs/{{ object.id }}" data-width="" data-numposts="5"></div>
+            </section>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="col-4">
+      <div class="widget_recent_entries  push-down-30">
+        <h6>Recent Posts</h6>
+        <hr>
+        <ul>
+          {% for k in blog reversed %}
+          <li>
+            <a href="{{ k.get_absolute_url }}">{{ k.title_intro }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="widget_text  push-down-30">
+        <h6>Facebook</h6><hr>
+        <div class="textwidget">
+          <div id="likebox-wrapper">
+            <div class="fb-page" data-href="https://www.facebook.com/intrepidGeeks/" data-tabs="timeline" data-width="" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/intrepidGeeks/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/intrepidGeeks/">Intrepid Geeks</a></blockquote></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ./ Blog -->
+{% if user.is_authenticated %}
+<center><a href="{% url 'addblog' %}"><button type="button" class="btn btn-outline-info">Add Blog</button></a></center>
+    
+{% endif %}
+<br/>
+   <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0&appId=195255544289075&autoLogAppEvents=1"></script>
+{% endblock %}

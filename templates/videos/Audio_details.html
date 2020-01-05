@@ -1,0 +1,679 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+<br>{% for object in object %}
+<nav class="navbar fixed-bottom navbar-light " style=" background-color: #000000;">
+  
+  <div class="row">
+  <div id="played">
+    <div id="cover"></div>
+    <h4> {{object.Name|upper }}</h4>
+  </div>
+  <div id="cover1">
+     <div id="buttons">
+                    <button id="pre" onclick="pre()"><img src="{% static 'images/Pre.png' %}" height="90%" width="90%"/></button>
+                    <button id="play" onclick="playOrPauseSong()"><img src="{% static 'images/Play.png' %}"/></button>
+                    <button id="next" onclick="next()"><img src="{% static 'images/Next.png' %}" height="90%" width="90%"/></button>
+                </div>
+  </div>
+  <div id="cover2">
+    <div id="seek-bar">
+                    <div id="fill"></div>
+                    <div id="handle"></div>
+                </div>
+  </div>
+  <div id="playlist" >
+    
+  </div>
+  </div>
+</nav>
+
+<h1><i class="fa fa-music" aria-hidden="true"></i> My Music Player<i class="fa fa-music" aria-hidden="true"></i> </h1>
+
+<main>
+  
+<div class="a song" id="a">a</div> 
+<div class="b song"id="a">b</div> 
+<div class="c song"id="a">c</div> 
+
+<div class="d song"id="a">d</div> 
+<div class="e song"id="a">e</div> 
+<div class="f song"id="a">f</div>
+
+<div class="g song"id="a">g</div> 
+<div class="h song"id="a">h</div> 
+<div class="i song"id="a">i</div> 
+ 
+</main>
+ <br><br>
+
+ <style type="text/css">
+*{
+ margin: 0; padding: 0;
+ box-sizing: border-box; font-family: 'Maven Pro', sans-serif;
+}
+
+h1{
+ text-align: center; font-size: 1.8rem;
+ color: #444; padding: 30px 0; 
+}
+h4{
+  text-align: center; font-size:1.2rem ;
+   margin: auto;
+  color: #FF0000; padding: 15px 0; 
+  font: italic;
+
+}
+
+main{
+ width: 90%; height: 550px;
+ margin: auto; border: 1px solid black;
+ display: flex; justify-content: space-around;
+ align-items: center; flex-wrap: wrap;
+}
+
+#a{
+ width: 30%; height: 160px;
+ /*border: 1px solid red;*/
+ box-shadow: 2px 2px 5px grey;
+ border-radius: 10px; cursor: pointer;
+
+}
+
+.a{
+  background-image: url('{{object.cover.url}}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.b{
+background-image: url('{% static 'images/studentOne.jpg' %}');
+background-size: 100% 100%;
+background-repeat: no-repeat;
+}
+
+.c{
+background-image: url('images/js13.jpg');
+background-size: 100% 100%;
+background-repeat: no-repeat;
+}
+
+.d{
+background-image: url('images/js4.jpg');
+background-size: 100% 100%;
+background-repeat: no-repeat;
+}
+
+.e{
+background-image: url('images/js5.jpg');
+background-size: 100% 100%;
+background-repeat: no-repeat;
+}
+.f{
+background-image: url('images/js11.jpg');
+background-size: 100% 100%;
+background-repeat: no-repeat;
+}
+.g{
+background-image: url('images/js7.jpg');
+background-size: 100% 100%;
+background-repeat: no-repeat;
+}
+
+.h{
+background-image: url('images/js14.jpg');
+background-size: 100% 100%;
+background-repeat: no-repeat;
+}
+
+.i{
+background-image: url('images/js12.jpg');
+background-size: 100% 100%;
+background-repeat: no-repeat;
+}
+#cover1{
+ width: 300px; height: 50px;
+ border: 1px solid solid black;
+ cursor: pointer;
+ display: flex;
+ align-items: left;
+ 
+}
+#cover{
+  width: 50px; height: 50px;
+  border: 1px solid black;
+  box-shadow: 2px 2px 5px grey;
+ border-radius: 10px; cursor: pointer;
+  background-image: url('{{object.cover.url}}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+ display: flex;
+ align-items: left;
+}
+#played {
+ width: 350px; height: 50px;
+ border:1px solid black;
+ display: flex;
+ align-items: left;
+}
+#buttons{
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    position:relative;
+    top:10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#play,#next,#pre{
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background-color: black;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#next{
+    width: 30px;
+    height: 30px;
+    left: 70%;
+}
+#pre{
+    width: 30px;
+    height: 30px;
+    left: 30%;
+}
+#play img,#next img,#pre img{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#cover2{
+ width: 500px;
+ height: 50px;
+ border:1px solid black;
+ display: flex;
+ align-items: left;
+}
+
+#seek-bar{
+    width: 400px;
+    height: 5px;
+     margin: auto;
+    background-color:gray;
+    display: flex;
+    border-radius: 50px;
+    cursor: pointer;
+}
+#fill{
+    height: 5px;
+    background-color:royalblue;
+    border-radius: 20px;
+}
+#handle{
+    width: 8px;
+    height: 8px;
+    background-color:royalblue;
+    border-radius: 50%;
+    margin-left: -5px;
+    transform: scale(2);
+}
+#playlist{
+  width: 50px; height: 50px;
+  border: 1px solid black;
+  cursor: pointer;
+  background-image: url('{% static 'images/playlist.jpg' %}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+ display: flex;
+ align-items: left;
+}
+
+
+
+</style>
+<script>
+ 
+var divlenght = document.querySelectorAll('.song').length;
+console.log(divlenght);
+
+for(var i=0; i<divlenght; i++) {
+ var demo = document.querySelectorAll('.song')[i].addEventListener('click',playsong);
+
+ var demo = document.querySelectorAll('.song')[i].addEventListener('dblclick',pausesong);
+}
+
+var song1 = new Audio();
+song1.src = "{{ object.audio_file.url }}";
+
+var song2 = new Audio();
+song2.src = "music/alan2.mp3";
+
+var song3 = new Audio();
+song3.src = "music/alan3.mp3";
+
+function playsong(){
+ var songId = this.innerHTML;
+ console.log(songId);
+
+ switch (songId) {
+  case "a":
+   song1.play();
+   break;
+
+  case "b":
+   song2.play();
+   break;
+
+  case "c":
+   song3.play();
+   break;
+
+  case "d":
+   song1.play();
+   break;
+
+  case "e":
+   song2.play();
+   break;
+
+  case "f":
+   song3.play();
+   break;
+
+  case "g":
+   song1.play();
+   break;
+
+  case "h":
+   song2.play();
+   break;
+
+  case "i":
+   song3.play();
+   break;
+
+  default:
+   console.log("wrong input");
+   break;
+ }
+}
+
+function pausesong(){
+ var songId = this.innerHTML;
+ console.log(songId);
+
+ switch (songId) {
+  case "a":
+   song1.pause();
+   break;
+
+  case "b":
+   song2.pause();
+   break;
+
+  case "c":
+   song3.pause();
+   break;
+
+  case "d":
+   song1.pause();
+   break;
+
+  case "e":
+   song2.pause();
+   break;
+
+  case "f":
+   song3.pause();
+   break;
+
+  case "g":
+   song1.pause();
+   break;
+
+  case "h":
+   song2.pause();
+   break;
+
+  case "i":
+   song3.pause();
+   break;
+
+  default:
+   console.log("wrong input");
+   break;
+ }
+}
+
+ var songs = ["{{ object.audio_file.url }}","Song2.mp3","Song3.mp3"];
+        var poster = ["{% static 'images/Untitled.png' %}","Poster2.jpg","Poster3.jpg"];
+        
+        var songTitle = document.getElementById("songTitle");
+        var fillBar = document.getElementById("fill");
+        
+        var song = new Audio();
+        var currentSong = 0;    // it point to the current song
+        
+        window.onload = playSong;   // it will call the function playSong when window is load
+        
+        function playSong(){
+            
+            song.src = songs[currentSong];  //set the source of 0th song 
+            
+            songTitle.textContent = songs[currentSong]; // set the title of song
+            
+            song.play();    // play the song
+        }
+        
+        function playOrPauseSong(){
+            
+            if(song.paused){
+                song.play();
+                $("#play img").attr("src","{% static 'images/Pause.png' %}");
+            }
+            else{
+                song.pause();
+                $("#play img").attr("src","{% static 'images/Play.png' %}");
+            }
+        }
+        
+        song.addEventListener('timeupdate',function(){ 
+            
+            var position = song.currentTime / song.duration;
+            
+            fillBar.style.width = position * 100 +'%';
+        });
+        
+    
+        function next(){
+            
+            currentSong++;
+            if(currentSong > 2){
+                currentSong = 0;
+            }
+            playSong();
+            $("#play img").attr("src","{% static 'images/Pause.png' %}");
+            $("#image img").attr("src",poster[currentSong]);
+            $("#bg img").attr("src",poster[currentSong]);
+        }
+    
+        function pre(){
+            
+            currentSong--;
+            if(currentSong < 0){
+                currentSong = 2;
+            }
+            playSong();
+            $("#play img").attr("src","{% static 'images/Pause.png' %}");
+            $("#image img").attr("src",poster[currentSong]);
+            $("#bg img").attr("src",poster[currentSong]);
+        }
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</script>
+
+
+
+
+
+
+{% endfor %}
+
+{% endblock %}
+
+
+
+
+
+
+
+<div id="bg">
+            <div id="blackLayer"></div>
+            <img src="{% static 'images/Untitled.png' %}}"/>
+        </div>
+       
+        <div id="main">
+            <div id="image">
+                <img src="{% static 'images/Untitled.png' %}"/>
+            </div>
+            <div id="player">
+                <div id="songTitle">Demo</div>
+                <div id="buttons">
+                    <button id="pre" onclick="pre()"><img src="{% static 'images/Pre.png' %}" height="90%" width="90%"/></button>
+                    <button id="play" onclick="playOrPauseSong()"><img src="{% static 'images/Play.png' %}"/></button>
+                    <button id="next" onclick="next()"><img src="{% static 'images/Next.png' %}" height="90%" width="90%"/></button>
+                </div>
+                
+                <div id="seek-bar">
+                    <div id="fill"></div>
+                    <div id="handle"></div>
+                </div>
+            </div>
+        </div>
+
+   
+    <style type="text/css">
+    	
+
+
+    	body{
+    margin: 0px;
+    padding: 0px;
+}
+#bg{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+}
+#bg img{
+    height: 120vh;
+    width: 105%;
+    -webkit-filter:blur(20px);
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1;
+}
+#blackLayer{
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0,0,0,.2);
+    position: absolute;
+    z-index: 99;
+}
+#main{
+    width: 25%;
+    background-color:#fff;
+    border-radius: 15px;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 999;
+}
+#image img{
+    height: 180px;
+    width: 100%;
+    margin-top: -5px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+#player{
+    padding: 25px;
+    color:#333;
+}
+#songTitle{
+    width:300px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 18px;
+    position: absolute;
+    top:60%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#buttons{
+    height: 50px;
+    width: 100%;
+    margin-top: 50px;
+    position:relative;
+    top:10%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#play,#next,#pre{
+    width: 50px;
+    height: 50px;
+    border: 0;
+    background-color:royalblue;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#next{
+    width: 30px;
+    height: 30px;
+    left: 70%;
+}
+#pre{
+    width: 30px;
+    height: 30px;
+    left: 30%;
+}
+#play img,#next img,#pre img{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+#seek-bar{
+    width: 250px;
+    height: 5px;
+    background-color:gray;
+    display: flex;
+    border-radius: 50px;
+    margin-left: 25px;
+    cursor: pointer;
+}
+#fill{
+    height: 5px;
+    background-color:royalblue;
+    border-radius: 20px;
+}
+#handle{
+    width: 8px;
+    height: 8px;
+    background-color:royalblue;
+    border-radius: 50%;
+    margin-left: -5px;
+    transform: scale(2);
+}
+
+
+
+
+
+    </style>
+    <script type="text/javascript">
+    
+        var songs = ["{{ object.audio_file.url }}","Song2.mp3","Song3.mp3"];
+        var poster = ["{% static 'images/Untitled.png' %}","Poster2.jpg","Poster3.jpg"];
+        
+        var songTitle = document.getElementById("songTitle");
+        var fillBar = document.getElementById("fill");
+        
+        var song = new Audio();
+        var currentSong = 0;    // it point to the current song
+        
+        window.onload = playSong;   // it will call the function playSong when window is load
+        
+        function playSong(){
+            
+            song.src = songs[currentSong];  //set the source of 0th song 
+            
+            songTitle.textContent = songs[currentSong]; // set the title of song
+            
+            song.play();    // play the song
+        }
+        
+        function playOrPauseSong(){
+            
+            if(song.paused){
+                song.play();
+                $("#play img").attr("src","{% static 'images/Pause.png' %}");
+            }
+            else{
+                song.pause();
+                $("#play img").attr("src","{% static 'images/Play.png' %}");
+            }
+        }
+        
+        song.addEventListener('timeupdate',function(){ 
+            
+            var position = song.currentTime / song.duration;
+            
+            fillBar.style.width = position * 100 +'%';
+        });
+        
+    
+        function next(){
+            
+            currentSong++;
+            if(currentSong > 2){
+                currentSong = 0;
+            }
+            playSong();
+            $("#play img").attr("src","{% static 'images/Pause.png' %}");
+            $("#image img").attr("src",poster[currentSong]);
+            $("#bg img").attr("src",poster[currentSong]);
+        }
+    
+        function pre(){
+            
+            currentSong--;
+            if(currentSong < 0){
+                currentSong = 2;
+            }
+            playSong();
+            $("#play img").attr("src","{% static 'images/Pause.png' %}");
+            $("#image img").attr("src",poster[currentSong]);
+            $("#bg img").attr("src",poster[currentSong]);
+        }
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+    
+
+
+ 

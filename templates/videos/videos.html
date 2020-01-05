@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br/><br/><br/>
+    <!-- ./  Header-->
+
+
+    <!-- Start Portfolio -->
+    <section class="portfolio section-padding" data-scroll-index='3'>
+      <div class="container">
+        <div class="row">
+
+          <!-- Title -->
+          <div class="title">
+            <h3>Videos</h3>
+          </div>
+        </div>
+          <div class="row">
+            {% for k in full_list reversed %}
+            <div class="col-md-4"><a href="{{ k.get_absolute_url1 }}">
+              <div class="card mb-4 shadow-sm">
+                <img src="{{ k.Thumbnail.url }}" class="bd-placeholder-img card-img-top" width="100%" height="225"/>
+                <div class="card-body">
+                  <p class="card-text"><strong>{{ k.Name }}</strong></p>
+                </div>
+              </div></a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ./ Portfolio -->
+    {% if user.is_authenticated %}
+     <div class="text-center">
+  <a href="{% url 'addvideo' %}" class="btn btn-default btn-rounded">Add Video</a>
+</div>
+
+
+{% endif %}
+
+
+{% endblock  %}
+
+   

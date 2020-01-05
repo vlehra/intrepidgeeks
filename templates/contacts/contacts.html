@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+<header >
+      <!-- particles -->
+     <div class="jumbotron"  style=" height: 100%; margin-bottom: 0px;">
+   
+      <iframe width="100%" height="400" id="gmap_canvas" src="https://maps.google.com/maps?q=block%20c%20noida%20sector%20100&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+  
+   
+  </div>
+
+    </header>
+    <!-- ./  Header-->
+
+   
+   <!-- Start Contact -->
+    <section class="contact section-padding" data-scroll-index='5'>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <!-- Title -->
+          <div class="title col-md-12">
+            <h3>HELP DESK</h3>
+          </div>
+
+          <!-- Contact Item -->
+          <div class="col-md-3">
+            <div class="contact-item">
+              <!-- icon -->
+              <div class="c-icon">
+                <i class="fa fa-phone"></i>
+              </div>
+              <div class="c-text">
+                <h5>CALL US</h5>
+                <h6>+919971327620</h6>
+              </div>
+            </div>
+          </div>
+          <!-- Contact Item -->
+          <div class="col-md-3">
+            <div class="contact-item">
+              <!-- icon -->
+              <div class="c-icon">
+                <i class="fa fa-map-marker"></i>
+              </div>
+              <div class="c-text">
+                <h5>ADDRESS</h5>
+                <h6>H-235,Sector-100,Noida</h6>
+              </div>
+            </div>
+          </div>
+          <!-- Contact Item -->
+          <div class="col-md-3">
+            <div class="contact-item">
+              <!-- icon -->
+              <div class="c-icon">
+                <i class="fa fa-envelope"></i>
+              </div>
+              <div class="c-text">
+                <h5>E-mail</h5>
+                <h6>ideas@intrepidgeeks.com</h6>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact form -->
+          <form class="mt-50" method="post" id="main-contact-form" action="."><input type="hidden" name="form-name" value="form 1"/>
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 mb-10">
+                <div class="md-form">
+                    <input type="text" id="Name" class="form-control" name="Name" Placeholder="Name">
+                </div>
+              </div>
+
+              <div class="col-md-6 mb-10">
+                <div class="md-form">
+                    <input type="text" id="Email" class="form-control" name="Email" Placeholder="Email">
+                </div>
+              </div>
+
+              <div class="col-md-12 mb-10">
+                <div class="md-form">
+                    <input type="text" id="Contact_no" class="form-control" name="Contact_no" Placeholder="Contact Number">
+                </div>
+              </div>
+
+              <div class="col-md-12 mb-10">
+                <div class="md-form">
+                    <textarea type="text" id="Message" class="md-textarea" style="height: 100px" name="Message" Placeholder="Message"></textarea>
+                </div>
+              </div>
+
+              <div class="text-center col-md-12">
+                  <button class="btn  light-blue waves-effect waves-light" id="project-contact-us-button" type="submit">Send<i class="fa fa-paper-plane-o ml-1"></i></button>
+              </div>
+
+            </div>
+          </form>
+          <!-- Contact form -->
+
+        </div>
+      </div>
+    </section>
+    <!-- ./ Contact-->
+    <br><br>
+  {% if user.is_authenticated %}
+<div class="container">
+  {% for contact in contact %}
+  <div class="row">
+    <div class="col-3">
+      <h3>Name : {{ contact.Name }}</h3>
+    </div>
+    <div class="col-3">
+      <h3> Email : {{ contact.Email }}</h3>
+    </div>
+    <div class="col-3">
+      <h3> Contact number: {{ contact.Contact_no }}</h3>
+    </div>
+    <div class="col-3">
+      <h3> Message : {{ contact.Message }}</h3>
+    </div>
+  </div>
+  <br><br>
+  {% endfor %}
+</div>
+{% endif %}
+<style >
+    
+@media only screen and (max-width: 990px){
+h3{
+  font-size: .8rem;
+}
+}
+
+</style>
+{% endblock %}

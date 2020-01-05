@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+<section class="blog section-padding" data-scroll-index='0'>
+      <div class="container">
+        <div class="row">
+          <!-- Title -->
+          <div class="title col-md-12">
+            <h3>Add Blogs</h3>
+          </div>
+          {{ error }}
+          <form method="POST" action="{% url 'addblog' %}" enctype="multipart/form-data" >
+{% csrf_token %}
+ {{ form.as_p }}
+  
+
+  
+  
+  <input class="btn btn-success" type="submit" value="SAVE"/>
+
+
+</form>
+
+		  <!--Card--
+              <div class="col-lg-10">
+				<form method="POST" action="{% url 'addblog' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+  Title:<br/>
+  <input type="text" name="Title"/><br/><br/>
+
+  Header_pic:<br/>
+  <input type="file" name="Header_pic"/><br/><br/>
+  First para:<br/>
+  <input type="text" name="first_para"/><br/><br/>
+  Second para:<br/>
+  <input type="text" name="Second_para"/><br/><br/>
+  Image 1:<br/>
+  <input type="file" name="Image_1"/><br/><br/>
+  Third para:<br/>
+  <input type="text" name="Third_para"/><br/><br/>
+  Image 2:<br/>
+  <input type="file" name="Image_2"/><br/><br/>
+  Fourth para:<br/>
+  <input type="text" name="Fourth_para"/><br/><br/>
+  Image 3:<br/>
+  <input type="file" name="Image_3"/><br/><br/>
+  Fifth para:<br/>
+  <input type="text" name="Fifth_para"/><br/><br/>
+  Sixth para:<br/>
+  <input type="text" name="Sixth_para"/><br/><br/>
+  <input type="checkbox" name="Counselling" /> Counselling<br>
+  <input type="checkbox" name="Opportunities" /> Opportunities<br>
+  <input type="checkbox" name="Time_m" /> Time Management<br>
+  <input type="checkbox" name="Self_dev" /> Self Devlopment<br>
+  <input type="checkbox" name="Mental_fit" /> Mental Fitness<br>
+  <input type="checkbox" name="Academics" /> Academics<br>
+  <input type="checkbox" name="Technical" /> Technical Skills<br>
+  <input type="checkbox" name="Events" /> Events<br>
+  <input class="btn btn-success" type="submit" value="SAVE"/>
+
+
+</form>
+    		</div>< Card-->
+    	</div>
+    </div>
+</section>
+
+{% endblock %}

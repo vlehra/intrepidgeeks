@@ -1,0 +1,56 @@
+{% load static %}
+
+<div class="container">
+<nav class="navbar navbar-expand-lg fixed-top ">
+  <a class="navbar-brand" href="{% url 'home' %}"><img  class="bd-placeholder-img rounded-circle" src="{% static 'Untitled.png' %}"  style="width: 40px; height: 40px;"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <img src="{% static 'menu.jpg' %}">
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav text-right ml-auto">
+      <li class="nav-item ">
+        <a class="nav-link" href="{% url 'home' %}">Home </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'podcast'%}">PodCast</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'blog' %}">Blog</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'videos' %}" >Video</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="{% url 'mentors_home' %}" >Mentors</a>
+      </li>
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link " href="Javascript:{document.getElementById('logout').submit()}" >Logout</a>
+      </li>
+      <form id= "logout" method="POST" action="{% url 'logout' %}">
+       {% csrf_token %}
+       <input type="hidden"/>
+     </form>
+     {% endif %}
+    </ul>
+  </div>
+</nav>
+</div>
+<style >
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .navbar-toggler{
+    outline: none !important;
+    padding: 0 !important;
+  }
+  .navbar-toggler img{
+    width: 35px;
+  }
+  .nav-link{
+    color: #a669ce !important;
+    font-weight: 600;
+    margin-left: 30px;
+  }
+</style>

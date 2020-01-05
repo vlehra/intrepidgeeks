@@ -1,0 +1,200 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+
+<header>
+  
+</header>
+<main>
+  <div id="title">
+      <h1>{{ ep.Episodes_name|upper }}</h1>
+    </div>
+<div id="list">
+
+  <div class="card mb-3" id="podcast" style="max-width: 900px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ep.cover.url}}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 >{{ ep.Name|upper }}</h5>
+        <p class="card-text"> This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <audio controls id="audio1">
+          <source src="{{ ep.audio_file.url }}" type="audio/mpeg">
+        </audio>
+        </div>
+        <div class="row">
+        <p class="card-text"><small class="text-muted">{{ ep.pub_date_pretty }} </small></p>
+        <p class="card-text" id="write"><small class="text-muted">By {{ ep.speaker }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% for object in object %}
+{% if ep.Name == object.Episodes.Name %}
+<div class="card mb-3" id="podcast" style="max-width: 900px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{object.cover.url}}" class="card-img" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 >{{ object.Name|upper }}</h5>
+        <p class="card-text"> This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <audio controls id="audio1">
+          <source src="{{ object.audio_file.url }}" type="audio/mpeg">
+        </audio>
+        </div>
+        <div class="row">
+        <p class="card-text"><small class="text-muted">{{ object.pub_date_pretty }} </small></p>
+        <p class="card-text" id="write"><small class="text-muted">By {{ object.speaker }}</small></p>
+        </div>
+      </div>
+    </div>
+  </div>{% endif %}
+{% endfor %}
+
+<h4> Written by</h4>
+{% for ob in ob %}
+{% if ob.Name == ep.speaker.Name  %}
+<div class="row">
+  <div id="pic"><img src="{{ob.profile.url}}"></div>
+  <div id="about"><p>{{ob.Description}}</p></div></div>
+  {% endif %}
+{% endfor %}<br>
+<h4>COMMENTS</h4>
+<div class="fb-comments" data-href="http://localhost:8000/podcast/episodes/{{ ep.id }}" data-width="" data-numposts="5"></div>
+</div>
+
+
+
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0&appId=195255544289075&autoLogAppEvents=1"></script>
+    
+    </main>
+<br>
+<style type="text/css">
+	*{
+ margin: 0; padding: 0;
+ box-sizing: border-box; font-family: 'Maven Pro', sans-serif;
+
+}
+header{
+    box-sizing: border-box;
+    height: 500px;
+    width: 100%;
+    background-image: url('{{ ep.cover.url }}');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      display: flex; margin: auto;
+    margin-bottom: 30px;
+  }
+	main{
+ width: 80%; height: auto;
+ 
+ margin: auto;display: flex; justify-content: space-around;
+ align-items: center; flex-wrap: wrap;
+ 
+}
+#pic{
+
+  width: 100px; height: 100px;
+  box-shadow: 2px 2px 5px grey;
+  border-radius: 10px;
+  background-image: url('{{ep.profile.url}}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex; margin: auto;
+  align-content: top;
+}
+
+#title{
+  background-color: #fff;
+  box-shadow: 0 4px 5px 0 grey;
+  box-sizing: border-box;
+  
+  height: 150px;
+  width: 70%;
+  position: relative;
+  margin: 0 auto 80px;
+  display: inline-block;
+  text-align: center;
+ 
+}
+#title::after
+{
+  content: '';
+  height: 140px;
+  width: 300px;
+  background-color: #f992a6;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: -2;
+}
+#title::before
+ {
+  content: '';
+  height: 140px;
+  width: 300px;
+  background-color: #f992a6;
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  z-index: -2;
+}
+
+#list{
+  width: 1100px; height: auto;
+  margin: auto;
+}
+
+h1{
+margin-left: 20px;
+font-weight: bold;
+
+font-family: myFirstFont;
+  src: url(sansation_light.woff);
+  font-size: 2.5rem;
+ color: #444; padding: 30px 0; 
+}
+h4{
+ margin-left: 10px;
+ text-align: left; font-size: 1.8rem;
+ color: #444;
+}
+h5{
+ font: bold;
+font-style: italic;
+font-family: cursive;
+  src: url(cursive.woff);
+ text-align: left; font-size: 1.8rem;
+ color: #444;
+}
+#about{
+  background-color: #fff;
+  box-sizing: border-box;
+  border: 1px solid grey;
+  height: 150px;
+  width: 70%;
+  position: relative;
+  margin: 0 auto 80px;
+  display: inline-block;
+  text-align: left;
+  margin-top: 10px;
+ 
+}
+.writter{
+  width: 75%; height: 200px;
+ 
+ margin-top: 100px;
+ display: flex; justify-content: space-around;
+ align-items: center; flex-wrap: wrap;
+}
+</style>
+
+{% endblock %}

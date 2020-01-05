@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block title %} Login-IG {% endblock %} 
+{% block content %}
+<br/><br/><br/><br/>
+<div class="container">
+
+	<div class="col-md-12">
+<center>
+<i class="fa fa-user-circle-o" style="font-size:36px">
+<div class="title col-md-12">
+<h1>Login </h1>
+</div></i>
+<p>**Only authorized person allowed</p>
+<br/>
+{{ error }}
+{% if error %}
+<br/>
+{% endif %}
+<form method="POST" action="{% url 'login' %}">{% csrf_token %}
+	<input type="text" name="username" placeholder="Username" /><br/><br/>
+	<input type="Password" name="password" placeholder="Password" /><br/><br/>
+	
+	<input class="btn btn-success" type="submit" value="Login"/>
+
+
+</form>
+</center>
+	</div>
+</div><br/><br/>
+
+{% endblock %}

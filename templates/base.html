@@ -1,0 +1,336 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<link href='https://fonts.googleapis.com/css?family=Acme' rel='stylesheet'>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<meta name="google-site-verification" content="W9dNU-9QHHWt4bmJ8y-21rgcqmf1CDaHzWIAYK_JsA8" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137485669-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-137485669-1');
+</script>
+  <style>
+    .tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+/* Change background color of buttons on hover */
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Set default styles for tab content */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 50px;
+  text-align: center;
+}
+
+.logo{
+  height: 300px;
+    width: 70%;border-radius: 200px;
+  background-image: url('{% static 'logo.png' %}');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      display: flex; margin: auto;
+}
+.playbtn{
+  height: 80px;
+    width: 60%;
+  background-image: url('{% static 'google-play.png' %}');
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      display: flex; margin: auto;
+}
+.fa {
+  padding: 20px;
+  font-size: 30px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+#facebook {
+  background: #3B5998;
+  color: white;
+  
+}
+
+#twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+#google {
+  background: #dd4b39;
+  color: white;
+}
+
+#linkedin {
+  background: #007bb5;
+  color: white;
+}
+
+#youtube {
+  background: #bb0000;
+  color: white;
+}
+
+#instagram {
+  background: #125688;
+  color: white;
+}
+@media only screen and (max-width: 990px){
+    .logo{
+  height: 120px;
+  width: 70%;border-radius: 200px;
+  background-image: url('{% static 'logo.png' %}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex; margin: auto;
+}
+.playbtn{
+  height: 40px;
+  width: 60%;
+  background-image: url('{% static 'google-play.png' %}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex; margin: auto;
+}
+
+.fa {
+  padding: 10px;
+  font-size: 10px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+  }
+  </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Intrepid Geeks</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Philosopher:400,700,700i&amp;subset=cyrillic-ext,vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600i" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+    <!-- magnific-popup CSS -->
+        <link rel='stylesheet' href='http://d33wubrfki0l68.cloudfront.net/css/f7c33166984ffaa7725eb2f045126d33c71e651b/css/magnific-popup.css'/>
+    <!-- animate.min CSS -->
+        <link rel='stylesheet' href='http://d33wubrfki0l68.cloudfront.net/css/e966ec2885d74306b80253ef057ea77546b2c149/css/animate.min.css'/>
+    <!-- Font Icon Core CSS -->
+        <link rel='stylesheet' href='http://d33wubrfki0l68.cloudfront.net/css/2751115ce74a4f2e079b2dcf9b91522aa57907ac/css/et-line.css'/>
+    <!-- Bootstrap core CSS -->
+    <link rel='stylesheet' href='http://d33wubrfki0l68.cloudfront.net/css/bfcb4eb38f10f0bfcaebad084f03df9736f83ac9/css/bootstrap.min.css'/>
+    <!-- Material Design Bootstrap -->
+    
+    <!-- owl carousel CSS -->
+    <link rel='stylesheet' href='http://d33wubrfki0l68.cloudfront.net/bundles/a09f0fb6d1a1659d41d6e8555409d12ac6039b20.css'/>
+    
+    <!-- custom styles (optional) -->
+    <link rel='stylesheet' href='http://d33wubrfki0l68.cloudfront.net/css/09137fd092d565a25242c6bd4aea3ccfe0b7bc4f/css/style.css'/>
+    <!-- custom styles (optional) -->
+    <link rel='stylesheet' href='style.css'/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137485669-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-137485669-1');
+</script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0&appId=195255544289075&autoLogAppEvents=1"></script>
+</head>
+
+<body>
+  
+     
+  <!-- ====== Preloader ======  -->
+    <div class="loading">
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+  </div>
+  <!-- ======End Preloader ======  -->
+  {% include 'navbar.html' %}
+  
+    
+  {% block content %}
+  replace me hey how
+  {% endblock %}
+    
+    
+
+    
+    
+    <!--Footer-->
+    <footer class="page-footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-5">
+            <center><div class="logo"></div><br>
+            <a href="https://play.google.com/store/apps/details?id=co.april2019.geeks"><div class="playbtn"></div></a></center>
+          </div>
+          <div class="col-4"><ul>
+            <h5 style="color: #FFF;"> USEFUL LINKS</h5>
+            <hr >
+              <li><a href="{% url 'episodes' %}" style="color: #FFF ;" >
+                POD Eposides</a>
+              </li>
+              <li><a href="{% url 'videos' %}" style="color: #FFF ;" >
+                Videos</a>
+              </li>
+              <li><a href="{% url 'blog' %}" style="color: #FFF ;" >Blogs</a></li>
+            </ul>
+          </div>
+          <div class="col-3">
+            <ul>
+            <h5 style="color: #FFF;"> ABOUT </h5>
+            <hr>
+            <li>Our Company</li>
+            <li><a href="{% url 'mentors' %}" style="color: #FFF ;" >Our Mentors</a></li>
+            <li><a href="{% url 'Authors' %}" style="color: #FFF ;">Our Authors</a></li>
+            <li>Our Writers</li>
+            <li><a href="{% url 'contacts' %}" style="color: #EE1122 ;" > Contact Us</a></li>
+          </ul>
+          <br>
+          <h5 style="color: #FFF;"> Our Handells</h5>
+          <div class="fa fa-facebook" id="facebook"></div>
+          <div class="fa fa-twitter" id="twitter"></div>
+          <div class="fa fa-google" id="google"></div>
+          <a href="#" class="fa fa-linkedin" id="linkedin"></a>
+          <div  class="fa fa-youtube" id="youtube"></div>
+          <a href="#" class="fa fa-instagram" id="instagram"></a>
+          </div>
+        </div><br>
+        <div class="row">
+          
+        </div>
+      
+    </footer>
+    <style >
+      
+  
+  
+    </style>
+    <!--/.Footer-->
+    
+    <!-- SCRIPTS -->
+    
+    <script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("dot");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+}
+</script>
+<script>
+     $(window).load(function(){        
+   $('#modalContactForm').modal('show');
+    }); 
+</script>
+
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.min.js"></script>
+    <!-- particles js -->
+    <script src='http://d33wubrfki0l68.cloudfront.net/js/f6dec30335754a484a87d818da857c7e2e94fa48/js/particles/particles.js'></script>
+    <!-- App js -->
+    <script src='http://d33wubrfki0l68.cloudfront.net/bundles/fbeb69ca927c4180877147ca00308ebc978390b0.js'></script>
+    <!-- scrollIt js -->
+        <script src='http://d33wubrfki0l68.cloudfront.net/js/b56340b416d34bfb50d553e2dff5021cf2451e21/js/scrollit.min.js'></script>
+    <!-- owl carousel -->
+        <script src='http://d33wubrfki0l68.cloudfront.net/js/8f0e88ddb3f607323a894da9177eb4ca70fe97ce/js/owl.carousel.min.js'></script>
+    <!-- Bootstrap tooltips -->
+    <script type='text/javascript' src='http://d33wubrfki0l68.cloudfront.net/js/74b4491c00a0b5c72d1beda3c1fcc3f4f0246052/js/popper.min.js'></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type='text/javascript' src='http://d33wubrfki0l68.cloudfront.net/js/a85d8f0cf4e9eb71e79711590bbc1207fdc861ed/js/bootstrap.min.js'></script>
+    <!-- MDB core JavaScript -->
+    <script type='text/javascript' src='http://d33wubrfki0l68.cloudfront.net/js/1d6da86663c2c46c4ea3ab62a1ccd18a75aefea0/js/mdb.min.js'></script>
+    <!-- typed JavaScript -->
+    <script type='text/javascript' src='http://d33wubrfki0l68.cloudfront.net/js/c99c3e5fb6c9a4c1d65cb4fb2590afc1ce86679c/typed.js'></script>
+    <!-- barfiller JavaScript -->
+    <script type='text/javascript' src='http://d33wubrfki0l68.cloudfront.net/js/f6f36b4637163d4de9daf185ee3f7caa313e1540/js/jquery.barfiller.js'></script>
+    <!-- magnific-popup -->
+        <script src='http://d33wubrfki0l68.cloudfront.net/js/fc7275f61682fa1ea733c2987b43c46eda377256/js/jquery.magnific-popup.min.js'></script>
+    <!-- stellar js -->
+        <script src='http://d33wubrfki0l68.cloudfront.net/js/8fdb0d77da9a6b77397f438141d0af686517171b/js/jquery.stellar.min.js'></script>
+        <!-- isotope.pkgd.min js -->
+        <script src='http://d33wubrfki0l68.cloudfront.net/js/5ffcda38920cf4fbcff71182c20641f2058aaa11/js/isotope.pkgd.min.js'></script>
+
+    <!-- custom JavaScript -->
+    <script type='text/javascript' src='http://d33wubrfki0l68.cloudfront.net/js/1d15eec8a85ea087200016684cf8c24a14a75e17/js/custom.js'></script>
+
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+<br><br>
+<div class="title col-md-12">
+    <h3>Mentors Details</h3>
+</div>
+
+
+
+
+<main>
+	<div id="profile">
+		<div class="row">
+		<div id="pic"></div>
+		<div id="name">
+			<h1>{{ obj.Name|upper }}</h1>
+			<h4>{{ obj.College }}</h4>
+			<h6>{{ obj.Description }}</h6>
+			<div id="handlles1">
+			<div id="fb1" onclick="Javascript:{document.getElementById('fburl').click()}">
+				<a id="fburl" href="{{ obj.facebook }}"></a>
+			</div>
+			<div id="insta1"onclick="Javascript:{document.getElementById('instaurl').click()}">
+				<a id="instaurl" href="{{ obj.insta }}"></a>
+			</div>
+			<div id="twitter1"onclick="Javascript:{document.getElementById('twitterurl').click()}">
+				<a id="twitterurl" href="{{ obj.twitter }}"></a>
+			</div>
+			</div>
+		</div>
+		</div>
+
+  <div class="container">
+  	<div class="row">
+  		<div class="col-4">
+  			<h6>Speciality: {{obj.Speciality}}</h6>
+  		</div>
+  		<div class="col-4">
+  			<h6>Company work in: {{obj.job}}</h6>
+  		</div>
+  		<div class="col-4">
+  			<h6>Courses: {{obj.Course1}},{{obj.Course2}},<br>{{obj.Course3}},{{obj.Course4}},<br>{{obj.Course5}}</h6>
+  		</div>
+  		
+  	
+  </div>
+
+
+
+		</div>
+	</div>
+</main>
+<br>
+<style type="text/css">
+	*{
+ margin: 0; padding: 0;
+ box-sizing: border-box; font-family: 'Maven Pro', sans-serif;
+
+}
+	main{
+ width: 80%; height: auto;
+ margin: auto; justify-content: space-around;
+ align-items: center; flex-wrap: wrap;
+ 
+}
+#pic{
+
+  width: 18%; height: 200px;
+  box-shadow: 2px 2px 5px grey;
+  border-radius: 10px;
+  background-image: url('{{obj.profile_pic.url}}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex; margin: auto;
+}
+#name{
+  width: 75%;
+  height: 300px;
+  background-color: #fff;
+  margin: 0 auto 80px; position: relative;
+  box-shadow: 0 4px 5px 0 grey;
+ 
+}
+#name::after
+{
+  content: '';
+  height: 200px;
+  width: 300px;
+  background-color: #f992a6;
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  z-index: -2;
+}
+#name::before
+ {
+  content: '';
+  height: 200px;
+  width: 300px;
+  background-color: #f992a6;
+  position: absolute;
+  bottom: -10px;
+  right: -10px;
+  z-index: -2;
+}
+
+
+  @media only screen and (max-width: 990px){
+ 
+  #pic{
+
+  width: 30%; height: 200px;
+  box-shadow: 2px 2px 5px grey;
+  border-radius: 10px;
+  background-image: url('{{obj.profile_pic.url}}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+   margin: auto;
+}
+  #name{
+  width: 300px;
+  height: 300px;
+  background-color: #fff;
+  margin: 0 auto 80px; position: relative;
+  box-shadow: 0 4px 5px 0 grey;
+ 
+}
+#handlles1{
+  display: none;
+}
+  }
+
+h1{
+margin-left: 20px;
+font-weight: bold;
+
+font-family: myFirstFont;
+  src: url(sansation_light.woff);
+ text-align: left; font-size: 2.5rem;
+ color: #444; padding: 30px 0; 
+}
+h4{
+ margin-left: 10px;
+ text-align: left; font-size: 1.8rem;
+ color: #444;
+}
+h6{
+ font: bold;
+font-style: italic;
+font-family: cursive;
+  src: url(cursive.woff);
+ text-align: left; font-size: 1.4rem;
+ color: #444;
+}
+#handlles1{
+  width: 200px; height: 50px;
+  margin: auto;
+  margin-left: 600px;
+  display: flex; justify-content: space-around;
+  flex-wrap: wrap; margin-top: 50px;
+
+}
+#fb1{
+ width: 50px; height: 50px;
+  box-shadow: 2px 2px 5px grey;
+ border-radius: 30px; cursor: pointer;
+  background-image: url('{% static 'images/facebook.png' %}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+ display: flex;
+}
+ #insta1{
+ width: 50px; height: 50px;
+  box-shadow: 2px 2px 5px grey;
+ border-radius: 30px; cursor: pointer;
+  background-image: url('{% static 'images/instagram.png' %}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+ 
+ }
+ #twitter1{
+  width: 50px; height: 50px;
+  box-shadow: 2px 2px 5px grey;
+ border-radius: 30px; cursor: pointer;
+  background-image: url('{% static 'images/twitter1.png' %}');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+ 
+ }
+
+.card-body{
+	height: auto;
+}
+</style>
+
+{% endblock %}

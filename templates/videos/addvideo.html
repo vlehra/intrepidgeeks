@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<br/><br/><br/>
+<section class="blog section-padding" data-scroll-index='0'>
+      <div class="container">
+        <div class="row">
+          <!-- Title -->
+          <div class="title col-md-12">
+            <h3>Add Video</h3>
+          </div>
+          {{ error }}
+      <!--Card-->
+              <div class="col-lg-10">
+        <form method="POST" action="{% url 'addvideo' %}" enctype="multipart/form-data">
+  {% csrf_token %}
+  Link:<br/>
+  <input type="text" name="link"/><br/><br/>
+
+  Thumbnail:<br/>
+  <input type="file" name="pic"/><br/><br/>
+  Name:<br/>
+  <input type="text" name="Name"/><br/><br/>
+  Description para 1:<br/>
+  <input type="text" name="Description1"/><br/><br/>
+   Description para 2:<br/>
+  <input type="text" name="Description2"/><br/><br/>
+   Description para 3:<br/>
+  <input type="text" name="Description3"/><br/><br/>
+  
+  <input class="btn btn-success" type="submit" value="SAVE"/>
+
+
+</form>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+
+{% endblock  %}

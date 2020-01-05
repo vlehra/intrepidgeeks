@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% load static %}
+<div class="title">
+   <h3>Episodes</h3>
+</div>
+	
+  <body>
+  <div class="Menu nav nav-tabs" id="nav-tab" role="tablist">
+    <div class="btn">
+    <ul class="nav">
+  <li class="nav-item">
+    <a class="nav-link " href="{% url 'podcast' %}"><i class="fa fa-podcast" aria-hidden="true"></i>PodCasts</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'episodes' %}"><i class="fa fa-file-audio-o" aria-hidden="true"></i> Episodes </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'Authors' %}"><i class="fa fa-user-o" aria-hidden="true"></i>Authors </a>
+  </li>
+  
+</ul></div></div></body>
+<main>
+	<div class="table">
+		{% for ep in ep %}
+		<div class="items card bg-dark text-white" id="b">
+			<a href="{{ep.get_absolute_url1}}">
+  <img src="{{ep.cover.url}}" class="card-img" alt="..." height="350px" style=" box-shadow: 2px 2px 5px #000;
+ border-radius: 10px; cursor: pointer;">
+  <div class="card-img-overlay">
+   <h4>{{ ep.Episodes_name|upper }}</h4></a>
+    
+    <p>{{ep.Name}}</p>
+    {% for obj in obj %}
+		{% if ep.Name == obj.Episodes.Name  %}
+    <p >{{ obj.Name|upper }}</p>
+    {% endif %}
+		{% endfor %}
+    
+  </div></a>
+</div>
+		{% endfor %}
+	</div>
+	
+</main>
+{% if user.is_authenticated %}
+<center><a href="{% url 'addepisode' %}"><button type="button" class="btn btn-outline-info">Add Episode</button></a></center>
+    
+{% endif %}
+
+<br>
+
+
+
+<style type="text/css">
+	
+*{
+ margin: 0; padding: 0;
+ box-sizing: border-box; font-family: 'Maven Pro', sans-serif;
+}
+main{
+ width: 90%; height: auto;
+ margin: auto;
+ display: flex; justify-content: space-around;
+ align-items: center; flex-wrap: wrap;
+ margin-bottom: 30px;
+ margin-top: 30px;
+}
+
+body{
+    
+    margin-top: 40px;
+    text-align: center;
+    color: #000;
+    height: auto;
+  }
+h1{
+text-align: center;
+font-weight: bold;
+
+font-family: myFirstFont;
+  src: url(sansation_light.woff);
+ font-size: 2.5rem;
+ color: #000; padding: 30px 0; 
+}
+h4{
+  text-align: center;
+  font-size:1.8rem ;
+  margin-top: 180px;
+  color: #000; padding: 15px 0; 
+  font-weight:bold;
+  background-color: yellow;
+
+}
+.table{
+ width: 90%; height: auto;
+ margin: auto;
+ display: flex; justify-content: space-around;
+ align-items: center; flex-wrap: wrap;
+ margin-bottom: 30px;
+}
+#b{
+ width: 30%; height: 350px;
+ /*border: 1px solid red;*/
+ box-shadow: 2px 2px 5px #000;
+ border-radius: 10px; cursor: pointer;
+ margin: 20px 20px 50px;
+
+}
+p{
+	color: #000;
+  background-color: #fff;
+  font-weight: bold;
+}
+
+.Menu{
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+    }
+.Menu .btn{
+    display: inline-block;
+    font-family: sans-serif;
+    font-size: 22px;
+    float: left;
+    color: #fff;
+    padding: 8px 12px;
+
+
+ }
+  .btn .fa{
+    background-color:  rgba(0, 0, 0, 0.5);
+    color: #fff;
+    width: 42px;
+    height: 42px;
+    text-align: center;
+    line-height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    padding: 15px;
+    
+
+}
+  .btn:hover{
+    cursor: pointer;
+    background-color: #fff;
+    color: #333;
+}
+
+h4:hover{
+cursor: pointer;
+background-color: #fff;
+color: #333;
+}
+p:hover{
+cursor: pointer;
+background-color: yellow;
+color: #333;
+}
+
+</style>
+
+
+
+{% endblock %}
